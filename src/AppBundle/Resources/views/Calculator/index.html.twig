@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block stylesheets %}
+        {% stylesheets 'bundles/app/css/*' filter='cssrewrite' output='css/calcIndex.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            This is a very simple calculator that lets you calculate two single-digit values with the 4 basic possible
+            operations.  It is also not possible to manually provide numbers unless you decide to be sneaky about it.<br /><br />
+
+            Have fun!
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <input id="num1" type="text" size="1" maxlength="1" readonly="readonly" aria-readonly="true" value="" class="input input-sm" />
+            &nbsp;<span id="opSign">&nbsp;</span>&nbsp;
+            <input id="num2" type="text" size="1" maxlength="1" readonly="readonly" aria-readonly="true" value="" class="input input-sm" />
+            &nbsp;=&nbsp;<span id="answer">&nbsp;</span>
+            <br />
+            <div class="btn-group">
+                <button value="7" class="number btn btn-default">7</button>
+                <button value="8" class="number btn btn-default">8</button>
+                <button value="9" class="number btn btn-default">9</button><br />
+                <button value="4" class="number btn btn-default">4</button>
+                <button value="5" class="number btn btn-default">5</button>
+                <button value="6" class="number btn btn-default">6</button><br />
+                <button value="1" class="number btn btn-default">1</button>
+                <button value="2" class="number btn btn-default">2</button>
+                <button value="3" class="number btn btn-default">3</button>
+            </div>
+            <div class="btn-group btn-group-xs">
+                <button value="/" class="op btn btn-default">/</button>
+                <button value="*" class="op btn btn-default">*</button><br />
+                <button value="+" class="op btn btn-default">+</button>
+                <button value="-" class="op btn btn-default">-</button><br />
+                <button id="calculate" class="btn btn-success">=</button>
+                <button id="clearValues" class="btn btn-danger">C</button>
+            </div>
+        </div>
+        <div class="col-md-1 col-md-pull-1">
+            <div class="btn-group">
+                <div class="btn-group btn-group-xs">
+                </div>
+            </div>
+            <div class="btn-group">
+                <div class="btn-group btn-group-xs">
+                </div>
+            </div>
+            <div class="btn-group-xs">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% block javascripts %}
+    {% javascripts
+        '@AppBundle/Resources/public/js/jquery-1.11.3.min.js'
+        '@AppBundle/Resources/public/js/bootstrap.min.js'
+        '@AppBundle/Resources/public/js/calculate.js'
+        output='js/calcIndex.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</html>
